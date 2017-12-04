@@ -6,11 +6,24 @@ import React, { Component } from 'react';
 // It's symbolic of 'const Component = React.Component;'
 
 class SearchBar extends Component /* can be React.Component*/ {
+    constructor(props) {
+        // Super is the same as callparent
+        super(props);
+
+        this.state = { term: 'Fuck you' };
+    }
+
     render() {
         // The following syntax expressing how to handle user event
         // Think simple, 'onChange' is a property combining 'on' key word
         // and event name ('change'). And it's using camelCase
-        return <input onChange={(event) => console.log(event.target.value)} />;
+        return (
+            <div>
+                <input 
+                value={this.state.term}
+                onChange={event => this.setState({ term: event.target.value })} />
+            </div>
+        );
     }
 }
 
